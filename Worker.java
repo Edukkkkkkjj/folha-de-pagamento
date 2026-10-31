@@ -1,25 +1,21 @@
 public class Worker {
 
-    String name;
-    int id = 0;
-    static int counter = 0;
-
-    static final double BASE_SALARY  = 2000;
-
+    protected String name;
+    protected double baseSalary = 2000;
 
     public Worker(String name) {
-        id = ++counter;
         this.name = name;
     }
 
-    public double getBaseSalary() {
-        return BASE_SALARY;
+    public String getName() {
+        return name;
     }
 
-    public String workerCreatedSucessfully() {
-        return "\nMatrícula: " + id +
-                "\nNome: " + name +
-                "\nSalário: " + BASE_SALARY;
+    public double getSalary() {
+        return baseSalary;
     }
 
+    public String workerCreated() {
+        return "Nome: " + name + " | Salário: R$ " + getSalary();
+    }
 }

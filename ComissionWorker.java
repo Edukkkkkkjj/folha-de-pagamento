@@ -1,36 +1,17 @@
 public class ComissionWorker extends Worker {
 
-    double amountSales, commission;
-    double baseSalary = BASE_SALARY;
+    private double commission;   // porcentagem
+    private double amountSales;  // total vendido
 
     public ComissionWorker(String name, double commission, double amountSales) {
         super(name);
-
-        this.amountSales = amountSales;
         this.commission = commission;
+        this.amountSales = amountSales;
     }
 
-    public double getCommission() {
-        return getSalary() - baseSalary;
+    @Override
+    public double getSalary() {
+        double extra = amountSales * (commission / 100);
+        return baseSalary + extra;
     }
-
-    public double getSalary () {
-        double totalCommission = amountSales * (commission / 100);
-
-        return baseSalary + totalCommission;
-    }
-
-@Override
-    public String toString() {
-        return "Worker ID: " + this.id +
-                "\n" + "Nome: " + this.name +
-                "\n" + "Salário base: R$" + baseSalary +
-                "\n" + "Comissão: " + commission + "%" +
-                "\n" + "Valor total em vendas: R$" + amountSales +
-                "\n" + "Comissão total: R$" + (getSalary() - baseSalary) +
-                "\n" + "Salário total no mês: " + getSalary();
-
-
-    }
-
 }
